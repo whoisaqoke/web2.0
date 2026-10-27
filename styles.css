@@ -1,0 +1,27 @@
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #D6C1A6;
+}
+
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+.cart-search-acc {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
