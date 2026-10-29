@@ -111,6 +111,18 @@ main {
 }
 
 /* ================= КАРТОЧКИ ================= */
+.head2{
+    background: blue;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  padding: clamp(12px, 2vw, 24px) 0;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: 8px;
+  margin-bottom: clamp(20px, 5vh, 80px);
+}
+
+
 .brand-desc-container {
   display: flex;
   flex-wrap: wrap;
@@ -157,6 +169,44 @@ main {
 #brand-desc_2 {
   background: blueviolet;
 }
+
+.category-grid{
+    display: grid;
+    grid-template-areas: 
+    "ski jackets boards"
+    "ski goggles boards";
+        /* 2. Обязательно задаем отступы и ВЫСОТУ */
+    gap: 16px;
+    height: 70vh; /* Высота сетки, чтобы карточки вытянулись */
+    min-height: 500px;
+    width: 100%;
+}
+
+.card {
+    position: relative; /* Точка отсчета */
+    overflow: hidden; /* Скрываем всё, что вылезает за скругленные углы */
+    border-radius: 12px;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Картинка заполняет блок */
+}
+
+.card-overlay {
+    position: absolute; /* Ложим поверх картинки */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+}
+.card-ski     { grid-area: ski; }
+.card-boards  { grid-area: boards; }
+.card-goggles { grid-area: goggles; }
+.card-jackets { grid-area: jackets; }
+
 
 /* ================= ФУТЕР СЛАЙДА ================= */
 .slide-footer {
