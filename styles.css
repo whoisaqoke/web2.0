@@ -1,3 +1,44 @@
+/* Шрифт для заголовков */
+@font-face {
+  font-family: 'HeadingFont';
+  /* Придумали имя */
+  src: url('fonts/AKONY.otf') format('woff2');
+  font-weight: normal;
+}
+
+/* Шрифт для обычного текста */
+@font-face {
+  font-family: 'BodyFont';
+  /* Другое имя */
+  src: url('fonts/ST-SPARTAK.OTF') format('woff2');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'special';
+  /* Другое имя */
+  src: url('fonts/Zhmur.otf') format('woff2');
+  font-weight: normal;
+}
+
+button {
+  font-family: 'special';
+}
+
+/* Теперь применяем их */
+h1,
+h2,
+h3,
+.brand-desc-head {
+  font-family: 'HeadingFont', sans-serif;
+}
+
+body,
+p,
+a {
+  font-family: 'BodyFont', sans-serif;
+}
+
 /* ================= RESET ================= */
 * {
   margin: 0;
@@ -5,7 +46,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   overflow-x: hidden;
 }
@@ -20,9 +62,15 @@ body {
   background: #fff;
 }
 
-a { color: inherit; text-decoration: none; }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-img { display: block; max-width: 100%; }
+img {
+  display: block;
+  max-width: 100%;
+}
 
 /* ================= HEADER ================= */
 .main-header {
@@ -33,7 +81,7 @@ img { display: block; max-width: 100%; }
   align-items: center;
   gap: clamp(10px, 2vw, 24px);
   padding: clamp(8px, 1.5vw, 16px) clamp(12px, 2vw, 32px);
-  background: #fff;
+  background: #a1a1a1;
   border-bottom: 1px solid #ddd;
 }
 
@@ -57,7 +105,9 @@ img { display: block; max-width: 100%; }
   gap: clamp(10px, 2vw, 24px);
 }
 
-.navigation-buttons a:hover { opacity: 0.7; }
+.navigation-buttons a:hover {
+  opacity: 0.7;
+}
 
 .cart-search-acc {
   display: flex;
@@ -76,9 +126,10 @@ img { display: block; max-width: 100%; }
   width: 100%;
   max-width: 220px;
   padding: 8px 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #1a1a1a;
   border-radius: 6px;
   font-size: 14px;
+  background-color: #a1a1a1;
 }
 
 /* ================= MAIN ================= */
@@ -96,11 +147,28 @@ main {
   flex-direction: column;
   align-items: center;
   padding: clamp(16px, 3vw, 32px);
-  background: bisque;
+
+  /* 1. Путь к твоей гифке */
+  background-image: url('src/giphy.gif');
+
+  /* 2. Растягиваем гифку на весь слайд */
+  background-size: cover;
+
+  /* 3. Центрируем */
+  background-position: center;
+
+  /* 4. Убираем повторение */
+  background-repeat: no-repeat;
+
+  /* 5. Фон на весь экран (на случай, если контента мало) */
+  min-height: 100vh;
+
+  /* 6. Фолбэк-цвет, пока гифка грузится */
+  background-color: #1a202c;
 }
 
 #brandname {
-  background: blue;
+
   color: #fff;
   width: 100%;
   text-align: center;
@@ -111,9 +179,9 @@ main {
 }
 
 /* ================= КАРТОЧКИ ================= */
-.head2{
-    background: blue;
-  color: #fff;
+.head2 {
+
+  color: #1a1a1a;
   width: 100%;
   text-align: center;
   padding: clamp(12px, 2vw, 24px) 0;
@@ -131,7 +199,7 @@ main {
 }
 
 .brand-desc {
-  background: aquamarine;
+
   padding: clamp(16px, 3vw, 32px);
   flex: 1 1 320px;
   border-radius: 8px;
@@ -164,56 +232,117 @@ main {
   transition: opacity 0.2s;
 }
 
-.brand-desc button:hover { opacity: 0.85; }
-
-#brand-desc_2 {
-  background: blueviolet;
+.brand-desc button:hover {
+  opacity: 0.85;
 }
 
-.category-grid{
-    display: grid;
-    grid-template-areas: 
+#brand-desc_2 {}
+
+.category-grid {
+  display: grid;
+  grid-template-areas:
     "ski jackets boards"
     "ski goggles boards";
-        /* 2. Обязательно задаем отступы и ВЫСОТУ */
-    gap: 16px;
-    height: 70vh; /* Высота сетки, чтобы карточки вытянулись */
-    min-height: 500px;
-    width: 100%;
+  /* 2. Обязательно задаем отступы и ВЫСОТУ */
+  gap: 16px;
+  height: 70vh;
+  /* Высота сетки, чтобы карточки вытянулись */
+  min-height: 500px;
+  width: 100%;
 }
 
 .card {
-    position: relative; /* Точка отсчета */
-    overflow: hidden; /* Скрываем всё, что вылезает за скругленные углы */
-    border-radius: 12px;
+  position: relative;
+  /* Точка отсчета */
+  overflow: hidden;
+  /* Скрываем всё, что вылезает за скругленные углы */
+  border-radius: 12px;
+  transition: box-shadow 0.3s ease, z-index 0s;
+  /* Твои старые стили: position: relative; overflow: hidden; border-radius: 12px; */
+}
+
+.card:hover img {
+  transform: scale(1.08);
+  /* Увеличиваем картинку на 8% */
+}
+
+.card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  /* Чтобы тень не перекрывалась соседними карточками */
 }
 
 .card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Картинка заполняет блок */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Картинка заполняет блок */
+  transition: transform 0.5s ease;
+
 }
 
 .card-overlay {
-    position: absolute; /* Ложим поверх картинки */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  /* Ложим поверх картинки */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 
 }
-.card-ski     { grid-area: ski; }
-.card-boards  { grid-area: boards; }
-.card-goggles { grid-area: goggles; }
-.card-jackets { grid-area: jackets; }
 
+.card-ski {
+  grid-area: ski;
+}
+
+.card-boards {
+  grid-area: boards;
+}
+
+.card-goggles {
+  grid-area: goggles;
+}
+
+.card-jackets {
+  grid-area: jackets;
+}
+
+.f-items-cards {
+  display: grid;
+  /* Создаем 4 колонки одинаковой ширины (1fr = 1 доля свободного пространства) */
+  grid-template-columns: repeat(4, 1fr);
+  /* Отступы между карточками (как на макете) */
+  gap: 24px;
+  margin-top: 2%;
+}
+
+.f-head {
+  font-size: 150%;
+}
+
+.item-card {}
+
+.card-category {
+  font-size: 70%;
+  color: #a1a1a1;
+}
+
+.name-and-price {
+  display: flex;
+  width: 100%;
+
+  justify-content: space-between;
+  gap: 16px;
+
+
+}
 
 /* ================= ФУТЕР СЛАЙДА ================= */
 .slide-footer {
   width: 100%;
   min-height: clamp(60px, 10vh, 120px);
   margin-top: auto;
-  background: brown;
+
   border-radius: 8px;
 }
 
